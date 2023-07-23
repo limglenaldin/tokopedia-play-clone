@@ -1,0 +1,358 @@
+openapi: 3.0.3
+info:
+  title: Tokopedia Play Clone API
+  description: API Spec for Tokopedia Play Clone
+  version: '1.0'
+  contact:
+    email: limglenaldin@gmail.com
+servers:
+  - url: http://localhost:3000/api/v1
+paths:
+  /videos:
+    get:
+      tags: ["Videos API"]
+      summary: Get a list of videos
+      responses:
+        '200':
+          $ref: '#/components/responses/videosResponse'
+    post:
+      tags: ["Videos API"]
+      summary: Store video data in a database
+      requestBody:
+        $ref: '#/components/requestBodies/videoRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/videoResponse'
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+  /videos/{id}:
+    parameters:
+      - $ref: '#/components/parameters/videoIdParam'
+    get:
+      tags: ["Videos API"]
+      summary: Get a single data of video
+      responses:
+        '200':
+          $ref: '#/components/responses/videoResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+    put:
+      tags: ["Videos API"]
+      summary: Update video data
+      requestBody:
+        $ref: '#/components/requestBodies/videoRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/videoResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+    delete:
+      tags: ["Videos API"]
+      summary: Delete a single data of video from database
+      responses:
+        '200':
+          $ref: '#/components/responses/successDeleteResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+  /videos/{id}/products:
+    parameters:
+      - $ref: '#/components/parameters/videoIdParam'
+    get:
+      tags: ["Videos API", "Products API"]
+      summary: Get a list of products in a video
+      responses:
+        '200':
+          $ref: '#/components/responses/productsResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+  /videos/{id}/comments:
+    parameters:
+      - $ref: '#/components/parameters/videoIdParam'
+    get:
+      tags: ["Videos API", "Comments API"]
+      summary: Get a list of comments in a video
+      responses:
+        '200':
+          $ref: '#/components/responses/productsResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+    post:
+      tags: ["Videos API", "Comments API"]
+      summary: Store a comment in a database
+      requestBody:
+        $ref: '#/components/requestBodies/commentRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/commentResponse'
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+  /products:
+    get:
+      tags: ["Products API"]
+      summary: Get a list of products
+      responses:
+        '200':
+          $ref: '#/components/responses/productsResponse'
+    post:
+      tags: ["Products API"]
+      summary: Store product data in a database
+      requestBody:
+        $ref: '#/components/requestBodies/productRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/videoResponse'
+        '400':
+          $ref: '#/components/responses/badRequestResponse'
+  /products/{id}:
+    parameters:
+      - $ref: '#/components/parameters/productIdParam'
+    get:
+      tags: ["Products API"]
+      summary: Get a single data of product
+      responses:
+        '200':
+          $ref: '#/components/responses/productResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+    put:
+      tags: ["Products API"]
+      summary: Update product data
+      requestBody:
+        $ref: '#/components/requestBodies/productRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/productResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+    delete:
+      tags: ["Products API"]
+      summary: Delete a single data of product from database
+      responses:
+        '200':
+          $ref: '#/components/responses/successDeleteResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
+components:
+  schemas:
+    videoObj:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        store:
+          type: string
+        thumbnail_url:
+          type: string
+        video_url:
+          type: string
+        total_view:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    productObj:
+      type: object
+      properties:
+        _id:
+          type: string
+        video_id:
+          type: string
+        title:
+          type: string
+        link:
+          type: string
+        image_url:
+          type: string
+        price:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    commentObj:
+      type: object
+      properties:
+        _id:
+          type: string
+        video_id:
+          type: string
+        username:
+          type: string
+        comment:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    baseResponseObj:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+  parameters:
+    videoIdParam:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    productIdParam:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    videoRequestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              store:
+                type: string
+              thumbnail_url:
+                type: string
+              video_url:
+                type: string
+    productRequestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              video_id:
+                type: string
+              title:
+                type: string
+              link:
+                type: string
+              image_url:
+                type: string
+              price:
+                type: integer
+    commentRequestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              comment:
+                type: string
+  responses:
+    videosResponse:
+      description: Success Response of /videos routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/videoObj'
+    videoResponse:
+      description: Success Response of /videos routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/videoObj'
+    productsResponse:
+      description: Success Response of /products routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/productObj'
+    productResponse:
+      description: Success Response of /products routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/productObj'
+    commentsResponse:
+      description: Success Response of /comments routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/commentObj'
+    commentResponse:
+      description: Success Response of /comments routes
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/commentObj'
+    badRequestResponse:
+      description: Response for HTTP 400 - Bad Request
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  error:
+                    type: array
+                    items:
+                      type: string
+    notFoundResponse:
+      description: Response for HTTP 404 - Not Found
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    type: object
+    successDeleteResponse:
+      description: Response for success delete data
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/baseResponseObj'
+              - type: object
+                properties:
+                  data:
+                    type: object
