@@ -2,8 +2,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 
-// Module
+// Configuration
 import { app_port } from './config';
+import connectDatabase from './src/database/database';
+
+// Router
 import router from './src/router';
 
 const app = express();
@@ -12,6 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
 }));
+
+connectDatabase()
 
 app.use('/api', router);
 
