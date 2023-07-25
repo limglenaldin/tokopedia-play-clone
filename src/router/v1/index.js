@@ -3,7 +3,7 @@ import express from 'express'
 
 // Routes
 import videoRouter from './video.router';
-import productRouter from './product.router';
+import { productRouter } from './product.router';
 
 const routerV1 = express.Router();
 

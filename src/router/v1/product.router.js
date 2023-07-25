@@ -17,4 +17,10 @@ productRouter.get('/:id', productController.show)
 productRouter.put('/:id', productController.update)
 productRouter.delete('/:id', productController.destroy)
 
-export default productRouter
+const productVideoRouter = express.Router({
+    mergeParams: true 
+})
+
+productVideoRouter.get('/', productController.indexByVideoId)
+
+export { productRouter, productVideoRouter }

@@ -65,6 +65,16 @@ class ProductServices {
             return { errors: error, result: null};
         }
     }
+
+    findByVideoId = async (videoId) => {
+        try {
+            const products = await Product.find({ videoId: videoId });
+
+            return { errors: [], result: products};
+        } catch (error) {
+            return { errors: error, result: null};
+        }
+    }
 }
 
 export default ProductServices

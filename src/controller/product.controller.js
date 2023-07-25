@@ -163,6 +163,27 @@ class ProductController {
                     ''
                 ));
     }
+
+    indexByVideoId = async (req, res) => {
+        const videoId = req.params.id
+        const { errors, result } = await this.productSvc.findByVideoId(videoId)
+
+        if (errors.length < 1) {
+            return res.status(StatusCodes.OK)
+                .send(successResponse(
+                    StatusCodes.OK,
+                    'Successfully get products data',
+                    result,
+                ));
+        }
+
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+                .send(errorResponse(
+                    StatusCodes.INTERNAL_SERVER_ERROR,
+                    'Internal server error',
+                    ''
+                ));
+    }
 }
 
 export default ProductController
