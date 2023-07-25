@@ -3,7 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 
 // Configuration
-import { app_port } from './config';
+import configuration from './config';
 import connectDatabase from './src/database/database';
 
 // Router
@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }));
 
-connectDatabase()
+connectDatabase(configuration.database_url, configuration.database_name)
 
 app.use('/api', router);
 
-app.listen(app_port, () => {
-    console.log(`Server Running on [http://127.0.0.1:${app_port}]`)
+app.listen(configuration.app_port, () => {
+    console.log(`Server Running on [http://127.0.0.1:${configuration.app_port}]`)
 });

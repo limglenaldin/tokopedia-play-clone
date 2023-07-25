@@ -1,7 +1,10 @@
 // Dependencies
 import 'dotenv/config'
 
-const app_port = process.env.APP_PORT;
-const mongoConnectionString = process.env.DATABASE_URL;
+const configuration = {
+    app_port: process.env.APP_PORT,
+    database_url: process.env.DATABASE_URL,
+    database_name: process.env.DATABASE_NAME
+}
 
-export { app_port, mongoConnectionString }
+export default configuration
