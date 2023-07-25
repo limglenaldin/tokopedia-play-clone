@@ -1,7 +1,7 @@
 // Dependencies
 import express from "express";
 
-// ....
+// N-Layer
 import VideoServices from "../../services/video.services";
 import VideoController from "../../controller/video.controller";
 import { videoValidation } from "../../model/video.model";

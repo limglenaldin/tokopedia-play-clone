@@ -47,7 +47,7 @@ class VideoServices {
                 videoUrl: data.video_url,
             })
 
-            return { errors: [], result: result._id};
+            return { errors: [], result: result?._id};
         } catch (error) {
             return { errors: error, result: null};
         }
