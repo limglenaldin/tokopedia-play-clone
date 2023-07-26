@@ -6,12 +6,15 @@ info:
   contact:
     email: limglenaldin@gmail.com
 servers:
-  - url: http://localhost:3000/api/v1
+  - url: http://localhost:5000/api/v1
+    description: Development
 paths:
   /videos:
     get:
       tags: ["Videos API"]
       summary: Get a list of videos
+      parameters:
+        - $ref: '#/components/parameters/videoSearchQuery'
       responses:
         '200':
           $ref: '#/components/responses/videosResponse'
@@ -46,6 +49,14 @@ paths:
           $ref: '#/components/responses/videoResponse'
         '404':
           $ref: '#/components/responses/notFoundResponse'
+    patch:
+      tags: ["Videos API"]
+      summary: Patch total view video data
+      responses:
+        '200':
+          $ref: '#/components/responses/videoResponse'
+        '404':
+          $ref: '#/components/responses/notFoundResponse'
     delete:
       tags: ["Videos API"]
       summary: Delete a single data of video from database
@@ -73,7 +84,7 @@ paths:
       summary: Get a list of comments in a video
       responses:
         '200':
-          $ref: '#/components/responses/productsResponse'
+          $ref: '#/components/responses/commentsResponse'
         '404':
           $ref: '#/components/responses/notFoundResponse'
     post:
@@ -139,54 +150,76 @@ components:
       properties:
         _id:
           type: string
+          example: "64bf8f8a7d935e54d3c33a6f"
         title:
           type: string
+          example: "Tampil Keren ke Kantor"
         store:
           type: string
+          example: "Press Play"
         thumbnail_url:
           type: string
+          example: "https://i3.ytimg.com/vi/SMz7wrkP5fI/maxresdefault.jpg"
         video_url:
           type: string
+          example: "https://www.youtube.com/watch?v=SMz7wrkP5fI&t=1s"
         total_view:
           type: integer
+          example: 100
         created_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
         updated_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
     productObj:
       type: object
       properties:
         _id:
           type: string
+          example: "64bfca671fabe1759e695652"
         video_id:
           type: string
+          example: "64bf8f8a7d935e54d3c33a6f"
         title:
           type: string
+          example: "KINETIC Lanyard Cardholder Wallet ID Card Name Tag Holder"
         link:
           type: string
+          example: "https://www.tokopedia.com/pressplay/kinetic-lanyard-cardholder-wallet-id-card-name-tag-holder"
         image_url:
           type: string
+          example: "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/6/8/92ff2ae0-7d33-4eeb-bdac-4a195ea7bd60.jpg"
         price:
           type: integer
+          example: 169000
         created_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
         updated_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
     commentObj:
       type: object
       properties:
         _id:
           type: string
+          example: "64bfca671fabe1759e695652"
         video_id:
           type: string
+          example: "64bf8f8a7d935e54d3c33a6f"
         username:
           type: string
+          example: "John Doe"
         comment:
           type: string
+          example: "Kak warnanya hanya hitam saja?"
         created_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
         updated_at:
           type: string
+          example: "2023-07-25T09:02:02.070Z"
     baseResponseObj:
       type: object
       properties:
@@ -195,6 +228,11 @@ components:
         message:
           type: string
   parameters:
+    videoSearchQuery:
+      in: query
+      name: search
+      schema:
+        type: string
     videoIdParam:
       in: path
       name: id
@@ -216,12 +254,16 @@ components:
             properties:
               title:
                 type: string
+                example: "Tampil Keren ke Kantor"
               store:
                 type: string
+                example: "Press Play"
               thumbnail_url:
                 type: string
+                example: "https://i3.ytimg.com/vi/SMz7wrkP5fI/maxresdefault.jpg"
               video_url:
                 type: string
+                example: "https://www.youtube.com/watch?v=SMz7wrkP5fI&t=1s"
     productRequestBody:
       content:
         application/json:
@@ -230,14 +272,19 @@ components:
             properties:
               video_id:
                 type: string
+                example: "64bf8f8a7d935e54d3c33a6f"
               title:
                 type: string
+                example: "KINETIC Lanyard Cardholder Wallet ID Card Name Tag Holder"
               link:
                 type: string
+                example: "https://www.tokopedia.com/pressplay/kinetic-lanyard-cardholder-wallet-id-card-name-tag-holder"
               image_url:
                 type: string
+                example: "https://images.tokopedia.net/img/cache/900/VqbcmM/2023/6/8/92ff2ae0-7d33-4eeb-bdac-4a195ea7bd60.jpg"
               price:
                 type: integer
+                example: 169000
     commentRequestBody:
       content:
         application/json:
@@ -246,8 +293,10 @@ components:
             properties:
               username:
                 type: string
+                example: "John Doe"
               comment:
                 type: string
+                example: "Kak warnanya hanya hitam saja?"
   responses:
     videosResponse:
       description: Success Response of /videos routes
@@ -272,7 +321,8 @@ components:
               - type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/videoObj'
+                    type: string
+                    example: "64bf8f8a7d935e54d3c33a6f"
     productsResponse:
       description: Success Response of /products routes
       content:
@@ -296,7 +346,8 @@ components:
               - type: object
                 properties:
                   data:
-                    $ref: '#/components/schemas/productObj'
+                    type: string
+                    example: "64bf8f8a7d935e54d3c33a6f"
     commentsResponse:
       description: Success Response of /comments routes
       content:
