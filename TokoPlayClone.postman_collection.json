@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "4ea39f5e-e958-40ff-b55a-71a53422a609",
+		"name": "TokoPlayClone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6960841"
+	},
+	"item": [
+		{
+			"name": "Videos API",
+			"item": [
+				{
+					"name": "Get All Videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Video",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Heboh\",\r\n  \"store\": \"Tokopedia Play\",\r\n  \"thumbnail_url\": \"video2.img\",\r\n  \"video_url\": \"video2.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/videos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Video by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c00f873b3ab009ec1a10f7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Video",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Hadiah Besar Duplic\",\r\n  \"store\": \"Tokopedia Play\",\r\n  \"thumbnail_url\": \"tester4.img\",\r\n  \"video_url\": \"tester4.mp4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c158fadc8262ecdda6c053"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Total View",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c10638b22e6abb9e8b0474"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Video",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c158fadc8262ecdda6c053"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products API",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"video_id\": \"64c00fc93b3ab009ec1a1102\",\r\n  \"title\": \"Cream Siang Pagi\",\r\n  \"link\": \"tokopedia.com/cream-malam-siang\",\r\n  \"image_url\": \"example.jpg\",\r\n  \"price\": 100000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c010273b3ab009ec1a110f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"video_id\": \"64bf8f8a7d935e54d3c33a6f\",\r\n  \"title\": \"Cream Siang Pagi\",\r\n  \"link\": \"tokopedia.com/cream-siang-siang\",\r\n  \"image_url\": \"example.jpg\",\r\n  \"price\": 120000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64bff572ea80637328baef86"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/products/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c00ff53b3ab009ec1a1107"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Video Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id",
+								"products"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c00fc93b3ab009ec1a1102"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment API",
+			"item": [
+				{
+					"name": "Get Comment by Video Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id/comments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c00fc93b3ab009ec1a1102"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Comment by Video Id Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"limglenaldin\",\r\n    \"comment\": \"Sugoiiiiiiiiiiiiiiiiiiiiiiiiii\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/videos/:id/comments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"videos",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64c00fc93b3ab009ec1a1102"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
