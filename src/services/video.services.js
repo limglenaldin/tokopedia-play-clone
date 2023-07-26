@@ -2,9 +2,15 @@
 import { Video } from '../model/video.model';
 
 class VideoServices {
-    findAll = async () => {
+    findAll = async (keyword) => {
         try {
-            const videos = await Video.find();
+            const search = keyword
+                ? { title: {
+                        $regex: new RegExp(keyword, 'i')
+                    }
+                } : {};
+
+            const videos = await Video.find(search)
 
             return { errors: [], result: videos};
         } catch (error) {

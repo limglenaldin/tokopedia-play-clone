@@ -13,7 +13,8 @@ class VideoController {
     }
 
     index = async (req, res) => {
-        const { errors, result } = await this.videoSvc.findAll();
+        const searchKeyword = req.query.search;
+        const { errors, result } = await this.videoSvc.findAll(searchKeyword);
 
         if (errors.length < 1) {
             return res.status(StatusCodes.OK)
