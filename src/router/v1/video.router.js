@@ -19,6 +19,7 @@ videoRouter.get('/', videoController.index)
 videoRouter.post('/', videoController.store)
 videoRouter.get('/:id', videoController.show)
 videoRouter.put('/:id', videoController.update)
+videoRouter.patch('/:id', videoController.patch)
 videoRouter.delete('/:id', videoController.destroy)
 
 videoRouter.use('/:id/products', productVideoRouter)

@@ -135,6 +135,35 @@ class VideoController {
                 ));
     }
 
+    patch = async (req, res) => {
+        const id = req.params.id
+
+        const { errors, result } = await this.videoSvc.patchTotalView(id);
+        
+        if (errors.length < 1) {
+            return result
+                ? res.status(StatusCodes.OK)
+                    .send(successResponse(
+                        StatusCodes.OK,
+                        'Successfully update video data',
+                        result,
+                    ))
+                : res.status(StatusCodes.NOT_FOUND)
+                    .send(successResponse(
+                        StatusCodes.NOT_FOUND,
+                        'Id doesn\'t match with our record',
+                        {},
+                    ))
+        }
+
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+                .send(errorResponse(
+                    StatusCodes.INTERNAL_SERVER_ERROR,
+                    'Internal server error',
+                    ''
+                ));
+    }
+
     destroy = async (req, res) => {
         const id = req.params.id
 

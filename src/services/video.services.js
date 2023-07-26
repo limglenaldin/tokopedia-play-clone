@@ -68,6 +68,19 @@ class VideoServices {
             return { errors: error, result: null};
         }
     }
+
+    patchTotalView = async (id) => {
+        try {
+            const result = await Video.findByIdAndUpdate(id, {
+                $inc : { 'totalView': 1 }
+            })
+
+            return { errors: [], result: result?._id};
+        } catch (error) {
+            console.log(error)
+            return { errors: error, result: null};
+        }
+    }
 }
 
 export default VideoServices
