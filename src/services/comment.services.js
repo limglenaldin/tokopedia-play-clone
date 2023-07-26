@@ -22,7 +22,6 @@ class CommentServices {
 
             return { errors: [], result: result};
         } catch (error) {
-            console.log(error)
             return { errors: error, result: null};
         }
     }

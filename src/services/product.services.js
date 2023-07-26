@@ -24,7 +24,6 @@ class ProductServices {
 
             return { errors: [], result: result};
         } catch (error) {
-            console.log(error)
             return { errors: error, result: null};
         }
     }
@@ -51,7 +50,6 @@ class ProductServices {
 
             return { errors: [], result: result?._id};
         } catch (error) {
-            console.log(error)
             return { errors: error, result: null};
         }
     }
