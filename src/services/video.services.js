@@ -1,6 +1,9 @@
 // Model
 import { Video } from '../model/video.model';
 
+// Utils
+import logger from '../../utils/logger/logger';
+
 class VideoServices {
     findAll = async (keyword) => {
         try {
@@ -14,6 +17,7 @@ class VideoServices {
 
             return { errors: [], result: videos};
         } catch (error) {
+            logger.error(`VideoService.findAll: ${error}`, { keyword: keyword })
             return { errors: error, result: null};
         }
     }
@@ -30,6 +34,7 @@ class VideoServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`VideoService.store: ${error}`, { payload: data })
             return { errors: error, result: null};
         }
     } 
@@ -40,6 +45,7 @@ class VideoServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`VideoService.findById: ${error}`, { id: id })
             return { errors: error, result: null};
         }
     }
@@ -55,6 +61,7 @@ class VideoServices {
 
             return { errors: [], result: result?._id};
         } catch (error) {
+            logger.error(`VideoService.updateById: ${error}`, { id: id, payload: data })
             return { errors: error, result: null};
         }
     }
@@ -65,6 +72,7 @@ class VideoServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`VideoService.deleteById: ${error}`, { id: id })
             return { errors: error, result: null};
         }
     }
@@ -77,7 +85,7 @@ class VideoServices {
 
             return { errors: [], result: result?._id};
         } catch (error) {
-            console.log(error)
+            logger.error(`VideoService.patchTotalView: ${error}`, { id: id })
             return { errors: error, result: null};
         }
     }

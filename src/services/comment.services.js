@@ -1,6 +1,9 @@
 // Model
 import { Comment } from "../model/comment.model";
 
+// Utils
+import logger from '../../utils/logger/logger';
+
 class CommentServices {
     findAll = async (videoId) => {
         try {
@@ -8,6 +11,7 @@ class CommentServices {
 
             return { errors: [], result: comments};
         } catch (error) {
+            logger.error(`CommentServices.findAll: ${error}`, { videoId: videoId })
             return { errors: error, result: null};
         }
     }
@@ -22,6 +26,7 @@ class CommentServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`CommentServices.store: ${error}`, { videoId: videoId, payload: data })
             return { errors: error, result: null};
         }
     }

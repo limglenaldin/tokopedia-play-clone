@@ -1,6 +1,9 @@
 // Model
 import { Product } from "../model/product.model";
 
+// Utils
+import logger from '../../utils/logger/logger';
+
 class ProductServices {
     findAll = async () => {
         try {
@@ -8,6 +11,7 @@ class ProductServices {
 
             return { errors: [], result: products};
         } catch (error) {
+            logger.error(`ProductServices.findAll: ${error}`)
             return { errors: error, result: null};
         }
     }
@@ -24,6 +28,7 @@ class ProductServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`ProductServices.store: ${error}`, { payload: data })
             return { errors: error, result: null};
         }
     }
@@ -34,6 +39,7 @@ class ProductServices {
 
             return { errors: [], result: products};
         } catch (error) {
+            logger.error(`ProductServices.findById: ${error}`, { id: id })
             return { errors: error, result: null};
         }
     }
@@ -50,6 +56,7 @@ class ProductServices {
 
             return { errors: [], result: result?._id};
         } catch (error) {
+            logger.error(`ProductServices.updateById: ${error}`, { id: id, payload: data })
             return { errors: error, result: null};
         }
     }
@@ -60,6 +67,7 @@ class ProductServices {
 
             return { errors: [], result: result};
         } catch (error) {
+            logger.error(`ProductServices.deleteById: ${error}`, { id: id })
             return { errors: error, result: null};
         }
     }
@@ -70,6 +78,7 @@ class ProductServices {
 
             return { errors: [], result: products};
         } catch (error) {
+            logger.error(`ProductServices.findByVideoId: ${error}`, { videoId: id })
             return { errors: error, result: null};
         }
     }
