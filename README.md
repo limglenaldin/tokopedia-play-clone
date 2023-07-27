@@ -19,7 +19,7 @@ Tokopedia Play Clone is a backend server built in ExpressJS and MongoDB.
 
         products {
             ObjectID _id
-            ObjectID videoId
+            String videoId
             string title
             string link
             string imageUrl
@@ -30,7 +30,7 @@ Tokopedia Play Clone is a backend server built in ExpressJS and MongoDB.
 
         comments {
             ObjectID _id
-            ObjectID videoId
+            String videoId
             string username
             string comment
             timestamp createdAt
