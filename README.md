@@ -39,9 +39,18 @@ Tokopedia Play Clone is a backend server built in ExpressJS and MongoDB.
 ```
 
 ## API Structure
+![API Structure](https://raw.githubusercontent.com/limglenaldin/limglenaldin/master/API%20Structure.png)
+
+When someone hit the endpoint, the router will call a specific Controller based on the endpoint and pass the request. On the Controller Layer, if HTTP Method POST or PUT, the request will be validate before it passed to Services Layer, else Controller will pass params and query param (if have).
+
+In Services Layer, it will call MongoDB Model via mongoose then return the value from database. After Services Layer get value, it will return object contains errors and result.
+
+Controller Layer will send response based on return value from the Service Layer and Router will forward to the client.
+
+## API List
 
 Base URL: http://localhost:5000/api/v1  
-Docs URL: http://localhost:5000/api/docs (available when server has start)
+Docs URL: http://localhost:5000/api/docs (available when server has start or you can upload /doc/swagger/api-spec.yaml to https://editor.swagger.io/)
 
 | Endpoint             | Group                    | Resources                               | Method                        |
 | -------------------- | ------------------------ | --------------------------------------- | ----------------------------- |
