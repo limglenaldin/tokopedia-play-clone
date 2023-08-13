@@ -1,6 +1,8 @@
 // Dependencies
 import express from 'express'
 import bodyParser from 'body-parser'
+import cors from "cors";
+import rateLimit from "express-rate-limit"
 
 // Configuration
 import configuration from './config';
@@ -13,8 +15,16 @@ import router from './src/router';
 import logger from './utils/logger/logger';
 import morganMiddleware from './src/middleware/morgan.middleware';
 
+// Config
+const limiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 100,
+})
+
 const app = express();
 
+app.use(limiter)
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,
