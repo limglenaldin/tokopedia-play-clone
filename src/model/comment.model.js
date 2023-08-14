@@ -1,6 +1,7 @@
 // Dependencies
 import mongoose from "mongoose"
 import Joi from "joi"
+import { socketIo } from "../../utils/socket";
 
 const commentValidation = Joi.object({
     username: Joi.string()
@@ -24,5 +25,9 @@ const mongoSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 const Comment = mongoose.model('Comment', mongoSchema)
+
+Comment.watch().on('change', () => {
+    socketIo.emit('newComment')
+});
 
 export { Comment, commentValidation } 
