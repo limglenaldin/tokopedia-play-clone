@@ -75,7 +75,10 @@ There are two option to running the server, if you have mongodb on your local ma
 4. Run `npm install` to install dependencies and wait until finish
 5. Run `npm run dev` to start the server
 6. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-7. Also you can import postman collection [`TokoPlayClone.postman_collection.json`](TokoPlayClone.postman_collection.json)
+7. Also you can import postman collection
+   - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
+   - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
+   - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
 
 ### Running via Docker Compose
 
@@ -89,7 +92,11 @@ There are two option to running the server, if you have mongodb on your local ma
    - if your machine is UNIX family you can run `make compose-up`
 4. Wait until building image is done
 5. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-6. Also you can import postman collection [`TokoPlayClone.postman_collection.json`](TokoPlayClone.postman_collection.json)
+6. Also you can import postman collection
+   - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
+   - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
+   - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
+
 
 ### Running via Pull Docker Image
 
@@ -100,4 +107,7 @@ There are two option to running the server, if you have mongodb on your local ma
 1. Run `docker pull limglenaldin/tokoplay-service` on terminal
 2. Run `docker run -d -p 5000:5000 --name tokoplay-svc limglenaldin/tokoplay-service`
 3. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-4. Also you can import postman collection [`TokoPlayClone.postman_collection.json`](TokoPlayClone.postman_collection.json)
+4. Also you can import postman collection
+   - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
+   - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
+   - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
