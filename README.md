@@ -1,6 +1,6 @@
 # TokoPlay Service
 
-TokoPlay Service is a backend server built in ExpressJS and MongoDB. For the frontend can be check on [this repo](https://github.com/limglenaldin/tokopedia-play-clone-fe)
+TokoPlay Service is a backend server built in ExpressJS and MongoDB. For the frontend can be checked on [this repo](https://github.com/limglenaldin/tokopedia-play-clone-fe)
 
 ## Database Structure
 
@@ -63,7 +63,7 @@ Docs URL: http://localhost:5000/api/docs (available when server has start or you
 There are two option to running the server, if you have mongodb on your local machine, you can running directly via terminal (npm). But if you haven't mongo on your local machine and you have Docker, you can running via Docker.
 
 ### Running directly via terminal (npm)
-#### Prerequsite
+#### Prerequisite
 - Have installed NodeJS v18 on the machine
 - Have installed MongoDB on the machine
 
@@ -82,16 +82,16 @@ There are two option to running the server, if you have mongodb on your local ma
    npm install
    npm run dev
    ```
-6. Finally, it can be access on `http://localhost:5000/api/v1`  
-   Also you can import postman collection
+6. Finally, it can be accessed on `http://localhost:5000/api/v1`  
+   Also, you can import Postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
 
 ### Running via Docker Compose
-#### Prerequsite
+#### Prerequisite
 - Have installed docker on the machine
-- Have installed `make` on terminal (optional)
+- Have installed `make` on a terminal (optional)
 
 #### Step to Run
 1. Clone the repo to your local machine
@@ -106,12 +106,12 @@ There are two option to running the server, if you have mongodb on your local ma
    ```
    docker-compose -f docker-compose.yml up --build -d
    ```
-   or if has installed `make`
+   or if it has installed `make`
    ```
    make compose-up
    ```
-5. Finally, it can be access on `http://localhost:5000/api/v1`  
-   Also you can import postman collection
+5. Finally, it can be accessed on `http://localhost:5000/api/v1`  
+   Also, you can import Postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
@@ -119,20 +119,20 @@ There are two option to running the server, if you have mongodb on your local ma
 
 ### Running via Pull Docker Image
 
-#### Prerequsite
+#### Prerequisite
 - Have installed docker on the machine
 
 #### Step to Run
-1. Pull docker image to your local machine
+1. Pull the docker image to your local machine
    ```
    docker pull limglenaldin/tokoplay-service
    ```
-2. Create container
+2. Create a container
    ```
    docker run -d -p 5000:5000 --name tokoplay-svc limglenaldin/tokoplay-service
    ```
-3. Finally, it can be access on `http://localhost:5000/api/v1`  
-   Also you can import postman collection
+3. Finally, it can be accessed on `http://localhost:5000/api/v1`  
+   Also, you can import Postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
