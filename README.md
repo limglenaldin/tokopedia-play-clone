@@ -1,6 +1,6 @@
-# Tokopedia Play Clone
+# TokoPlay Service
 
-Tokopedia Play Clone is a backend server built in ExpressJS and MongoDB.
+TokoPlay Service is a backend server built in ExpressJS and MongoDB. For the frontend can be check on [this repo](https://github.com/limglenaldin/tokopedia-play-clone-fe)
 
 ## Database Structure
 
@@ -50,7 +50,7 @@ Controller Layer will send response based on return value from the Service Layer
 ## API List
 
 Base URL: http://localhost:5000/api/v1  
-Docs URL: http://localhost:5000/api/docs (available when server has start or you can upload /doc/swagger/api-spec.yaml to https://editor.swagger.io/)
+Docs URL: http://localhost:5000/api/docs (available when server has start or you can upload [`api-spec.yaml`](./doc/swagger/api-spec.yaml) to https://editor.swagger.io/)
 
 | Endpoint             | Group                    | Resources                               | Method                        |
 | -------------------- | ------------------------ | --------------------------------------- | ----------------------------- |
@@ -60,39 +60,58 @@ Docs URL: http://localhost:5000/api/docs (available when server has start or you
 | /videos/:id/comments | Videos API, Comments API | Index, Store                            | GET, POST                     |
 
 ## Running the Server
-
 There are two option to running the server, if you have mongodb on your local machine, you can running directly via terminal (npm). But if you haven't mongo on your local machine and you have Docker, you can running via Docker.
-### Running directly via terminal (npm)
 
+### Running directly via terminal (npm)
 #### Prerequsite
 - Have installed NodeJS v18 on the machine
 - Have installed MongoDB on the machine
 
 #### Step to Run
-1. Clone this repo by running `git clone git@github.com:limglenaldin/tokopedia-play-clone.git` in your terminal
-2. Change the directory by running `cd tokopedia-play-clone`
+1. Clone the repo to your local machine
+   ```
+   git clone git@github.com:limglenaldin/tokopedia-play-clone.git
+   ```
+2. Change the directory
+   ```
+   cd tokopedia-play-clone
+   ```
 3. Create `.env` file by running `cp .env.example .env`
-4. Run `npm install` to install dependencies and wait until finish
-5. Run `npm run dev` to start the server
-6. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-7. Also you can import postman collection
+5. Install dependencies and start the development server
+   ```
+   npm install
+   npm run dev
+   ```
+6. Finally, it can be access on `http://localhost:5000/api/v1`  
+   Also you can import postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
 
 ### Running via Docker Compose
-
 #### Prerequsite
 - Have installed docker on the machine
+- Have installed `make` on terminal (optional)
 
 #### Step to Run
-1. Clone this repo by running `git clone git@github.com:limglenaldin/tokopedia-play-clone.git` in your terminal
-2. Change the directory by running `cd tokopedia-play-clone`
-3. Run `docker-compose -f docker-compose.yml up --build -d`
-   - if your machine is UNIX family you can run `make compose-up`
-4. Wait until building image is done
-5. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-6. Also you can import postman collection
+1. Clone the repo to your local machine
+   ```
+   git clone git@github.com:limglenaldin/tokopedia-play-clone.git
+   ```
+2. Change the directory
+   ```
+   cd tokopedia-play-clone
+   ```
+3. Compose Docker Container and wait until done
+   ```
+   docker-compose -f docker-compose.yml up --build -d
+   ```
+   or if has installed `make`
+   ```
+   make compose-up
+   ```
+5. Finally, it can be access on `http://localhost:5000/api/v1`  
+   Also you can import postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
@@ -104,10 +123,16 @@ There are two option to running the server, if you have mongodb on your local ma
 - Have installed docker on the machine
 
 #### Step to Run
-1. Run `docker pull limglenaldin/tokoplay-service` on terminal
-2. Run `docker run -d -p 5000:5000 --name tokoplay-svc limglenaldin/tokoplay-service`
-3. Open `http://localhost:5000/api/docs` on your browser to open SwaggerUI
-4. Also you can import postman collection
+1. Pull docker image to your local machine
+   ```
+   docker pull limglenaldin/tokoplay-service
+   ```
+2. Create container
+   ```
+   docker run -d -p 5000:5000 --name tokoplay-svc limglenaldin/tokoplay-service
+   ```
+3. Finally, it can be access on `http://localhost:5000/api/v1`  
+   Also you can import postman collection
    - [`TokoPlayClone.postman_collection.json`](./doc/postman/TokoPlayClone.postman_collection.json) : API Collection
    - [`TokoPlayClone Dev.postman_environment.json`](./doc/postman/TokoPlayClone%20Dev.postman_environment.json) : Env for Dev
    - [`TokoPlay Prod.postman_environment.json`](./doc/postman/TokoPlay%20Prod.postman_environment.json) : Env for Prod
