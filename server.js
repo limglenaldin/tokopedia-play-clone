@@ -8,7 +8,7 @@ import cors from "cors";
 import rateLimit from "express-rate-limit"
 
 // Configuration
-import configuration from './config';
+import configuration from './config/index';
 import connectDatabase from './src/database/database';
 
 // Router
