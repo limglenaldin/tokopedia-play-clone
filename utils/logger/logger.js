@@ -11,9 +11,9 @@ const format = winston.format.combine(
 
 const transports = [
     new winston.transports.Console(),
-    new winston.transports.File({
-        filename: 'logs/logger.log'
-    })
+    // new winston.transports.File({
+    //     filename: 'logs/logger.log'
+    // })
 ]
 
 const logger = winston.createLogger({
