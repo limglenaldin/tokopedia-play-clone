@@ -1,8 +1,8 @@
 // Model
-import { Comment } from "../model/comment.model";
+const { Comment } = require('./../model/comment.model.js')
 
 // Utils
-import logger from '../../utils/logger/logger';
+const logger = require('./../../utils/logger/logger.js')
 
 class CommentServices {
     findAll = async (videoId) => {
@@ -32,4 +32,4 @@ class CommentServices {
     }
 }
 
-export default CommentServices
+module.exports = CommentServices

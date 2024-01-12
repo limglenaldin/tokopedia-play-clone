@@ -1,8 +1,8 @@
 // Model
-import { Product } from "../model/product.model";
+const { Product } = require('./../model/product.model.js')
 
 // Utils
-import logger from '../../utils/logger/logger';
+const logger = require('./../../utils/logger/logger.js')
 
 class ProductServices {
     findAll = async () => {
@@ -84,4 +84,4 @@ class ProductServices {
     }
 }
 
-export default ProductServices
+module.exports = ProductServices

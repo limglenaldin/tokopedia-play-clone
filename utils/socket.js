@@ -1,6 +1,5 @@
 // Dependencies
-import { Server } from "socket.io";
-
+const Server = require('socket.io').Server
 
 const socketIo = new Server();
 
@@ -12,7 +11,7 @@ const initSocketIo = (httpServer) => {
     });
 }
 
-
-export { socketIo }
-
-export default initSocketIo
+module.exports = {
+    socketIo,
+    initSocketIo
+}

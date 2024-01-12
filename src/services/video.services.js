@@ -1,8 +1,8 @@
 // Model
-import { Video } from '../model/video.model';
+const { Video } = require('./../model/video.model.js')
 
 // Utils
-import logger from '../../utils/logger/logger';
+const logger = require('./../../utils/logger/logger.js')
 
 class VideoServices {
     findAll = async (keyword) => {
@@ -91,4 +91,4 @@ class VideoServices {
     }
 }
 
-export default VideoServices
+module.exports = VideoServices

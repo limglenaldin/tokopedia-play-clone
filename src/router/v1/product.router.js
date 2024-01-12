@@ -1,10 +1,10 @@
 // Dependencies
-import express from "express";
+const express = require('express')
 
 // N-Layer
-import ProductServices from "../../services/product.services";
-import ProductController from "../../controller/product.controller";
-import { productValidation } from "../../model/product.model";
+const ProductServices = require('./../../services/product.services.js')
+const ProductController = require('./../../controller/product.controller.js')
+const { productValidation } = require('./../../model/product.model.js')
 
 const productSvc = new ProductServices();
 const productController = new ProductController(productSvc, productValidation)
@@ -23,4 +23,7 @@ const productVideoRouter = express.Router({
 
 productVideoRouter.get('/', productController.indexByVideoId)
 
-export { productRouter, productVideoRouter }
+module.exports = {
+    productRouter,
+    productVideoRouter
+}

@@ -14,4 +14,7 @@ const errorResponse = (code, message, error) => {
     }
 }
 
-export {successResponse, errorResponse}
+module.exports = {
+    successResponse,
+    errorResponse
+}

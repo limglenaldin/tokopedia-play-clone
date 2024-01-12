@@ -1,9 +1,9 @@
 // Dependencies
-import express from 'express'
+const express = require('express')
 
 // Routes
-import videoRouter from './video.router';
-import { productRouter } from './product.router';
+const videoRouter = require('./video.router.js')
+const { productRouter } = require('./product.router.js')
 
 const routerV1 = express.Router();
 
@@ -14,4 +14,4 @@ routerV1.get('/', (req, res) => {
 routerV1.use('/videos', videoRouter)
 routerV1.use('/products', productRouter)
 
-export default routerV1
+module.exports = routerV1

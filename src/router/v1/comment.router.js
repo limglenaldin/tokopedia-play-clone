@@ -1,10 +1,10 @@
 // Dependencies
-import express from "express";
+const express = require('express')
 
 // N-Layer
-import CommentServices from "../../services/comment.services";
-import CommentController from "../../controller/comment.controller";
-import { commentValidation } from "../../model/comment.model";
+const CommentServices = require('./../../services/comment.services.js')
+const CommentController = require('./../../controller/comment.controller.js')
+const { commentValidation } = require('./../../model/comment.model.js')
 
 const commentSvc = new CommentServices();
 const commentController = new CommentController(commentSvc, commentValidation)
@@ -16,4 +16,4 @@ const commentRouter = express.Router({
 commentRouter.get('/', commentController.index)
 commentRouter.post('/', commentController.store)
 
-export default commentRouter
+module.exports = commentRouter

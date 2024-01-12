@@ -1,7 +1,7 @@
 // Dependencies
-import mongoose from "mongoose"
-import Joi from "joi"
-import { socketIo } from "../../utils/socket";
+const mongoose = require('mongoose')
+const Joi = require('joi')
+const { socketIo } = require('./../../utils/socket.js')
 
 const commentValidation = Joi.object({
     username: Joi.string()
@@ -30,4 +30,7 @@ Comment.watch().on('change', () => {
     socketIo.emit('newComment')
 });
 
-export { Comment, commentValidation } 
+module.exports = {
+    Comment,
+    commentValidation
+} 

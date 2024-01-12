@@ -1,6 +1,6 @@
 // Dependencies
-import mongoose from "mongoose"
-import Joi from "joi"
+const mongoose = require('mongoose')
+const Joi = require('joi')
 
 const videoValidation = Joi.object({
     title: Joi.string()
@@ -40,4 +40,7 @@ const mongoSchema = new mongoose.Schema({
 
 const Video = mongoose.model('Video', mongoSchema)
 
-export { Video, videoValidation } 
+module.exports = {
+    Video,
+    videoValidation
+} 

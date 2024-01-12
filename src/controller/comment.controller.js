@@ -1,10 +1,8 @@
 // Dependencies
-import {
-	StatusCodes,
-} from 'http-status-codes';
+const StatusCodes = require('http-status-codes').StatusCodes
 
 // Utils
-import { errorResponse, successResponse } from '../../utils/responseFormatter';
+const { errorResponse, successResponse } = require('./../../utils/responseFormatter.js')
 
 class CommentController {
     constructor (commentSvc, commentValidation) {
@@ -69,4 +67,4 @@ class CommentController {
     }
 }
 
-export default CommentController
+module.exports = CommentController

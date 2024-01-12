@@ -1,14 +1,14 @@
 // Dependencies
-import express from "express";
+const express = require('express')
 
 // N-Layer
-import VideoServices from "../../services/video.services";
-import VideoController from "../../controller/video.controller";
-import { videoValidation } from "../../model/video.model";
+const VideoServices = require('./../../services/video.services.js')
+const VideoController = require('./../../controller/video.controller.js')
+const { videoValidation } = require('./../../model/video.model.js')
 
 // Nested Router
-import { productVideoRouter } from "./product.router";
-import commentRouter from "./comment.router";
+const { productVideoRouter } = require('./product.router.js')
+const commentRouter = require('./comment.router.js')
 
 const videoSvc = new VideoServices();
 const videoController = new VideoController(videoSvc, videoValidation)
@@ -25,4 +25,4 @@ videoRouter.delete('/:id', videoController.destroy)
 videoRouter.use('/:id/products', productVideoRouter)
 videoRouter.use('/:id/comments', commentRouter)
 
-export default videoRouter
+module.exports = videoRouter

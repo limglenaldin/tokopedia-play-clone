@@ -1,10 +1,8 @@
 // Dependencies
-import {
-	StatusCodes,
-} from 'http-status-codes';
+const StatusCodes = require('http-status-codes').StatusCodes
 
 // Utils
-import { errorResponse, successResponse } from '../../utils/responseFormatter';
+const { errorResponse, successResponse } = require('./../../utils/responseFormatter.js')
 
 class ProductController {
     constructor (productSvc, productValidation) {
@@ -186,4 +184,4 @@ class ProductController {
     }
 }
 
-export default ProductController
+module.exports = ProductController

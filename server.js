@@ -1,23 +1,23 @@
 // Built-in
-import { createServer } from "http"
+const createServer = require('http').createServer
 
 // Dependencies
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from "cors";
-import rateLimit from "express-rate-limit"
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const rateLimit = require('express-rate-limit').rateLimit
 
 // Configuration
-import configuration from './config';
-import connectDatabase from './src/database/database';
+const configuration = require('./config/index.js')
+const connectDatabase = require('./src/database/database.js')
 
 // Router
-import router from './src/router';
+const router = require('./src/router/index.js')
 
 // Utils
-import logger from './utils/logger/logger';
-import morganMiddleware from './src/middleware/morgan.middleware';
-import initSocketIo, { socketIo } from "./utils/socket";
+const logger = require('./utils/logger/logger.js')
+const morganMiddleware = require('./src/middleware/morgan.middleware.js')
+const {socketIo, initSocketIo} = require('./utils/socket.js')
 
 // Config
 const limiter = rateLimit({
